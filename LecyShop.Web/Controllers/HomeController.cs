@@ -15,7 +15,7 @@ namespace LecyShop.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page Bao.";
 
             return View();
         }
@@ -23,7 +23,7 @@ namespace LecyShop.Web.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            //ahihi hahahah
             return View();
         }
     }
