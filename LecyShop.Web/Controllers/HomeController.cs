@@ -23,7 +23,7 @@ namespace LecyShop.Web.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-            //ahihi hahahah
+            
             return View();
         }
     }
