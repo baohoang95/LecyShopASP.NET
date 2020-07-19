@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+//Code First
 namespace LecyShop.Model.Models
 {
     [Table("Tags")]
