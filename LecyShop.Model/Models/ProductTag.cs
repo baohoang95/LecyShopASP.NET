@@ -7,16 +7,17 @@ namespace LecyShop.Model.Models
     public class ProductTag
     {
         [Key]
+        [Column(Order =1)]
         public int ProductID { set; get; }
 
         [Key]
-        [Column(TypeName = "varchar")]
+        [Column(Order = 2,TypeName = "varchar")]
         [MaxLength(50)]
         public string TagID { set; get; }
 
         [ForeignKey("ProductID")]
         public virtual Product Product { set; get; }
-
+       // ProductTag_Tag
         [ForeignKey("TagID")]
         public virtual Tag Tag { set; get; }
     }

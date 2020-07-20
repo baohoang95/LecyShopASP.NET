@@ -28,4 +28,4 @@ namespace LecyShop.Data.Repositories
             return this.DbContext.ProductCategories.Where(x => x.Alias == alias);
         }
     }
-}
+} 
