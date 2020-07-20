@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using LecyShop.Model.Abstract;
+using System.Collections.Generic;
 
 namespace LecyShop.Model.Models
 {
@@ -37,5 +38,7 @@ namespace LecyShop.Model.Models
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategory { set; get; }
+
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
