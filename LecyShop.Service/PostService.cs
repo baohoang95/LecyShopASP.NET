@@ -19,7 +19,15 @@ namespace LecyShop.Service
         IEnumerable<Post> GetAll();
 
         IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
-
+        /// <summary>
+        /// Lay tat ca post theo category
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="totalRow"></param>
+        /// <returns></returns>
+        IEnumerable<Post> GetAllByCategoryPaging( int categoryId, int page, int pageSize, out int totalRow);
         Post GetById(int id);
 
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
@@ -65,11 +73,17 @@ namespace LecyShop.Service
             return _postRepository.GetAll(new string[] { "PostCategory" });
         }
 
+        public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow)
+        {
+            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize , new string[] { "PostCategory" });
+        }
+
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
             //TODO: Select all post by tag
-            //Hỗ trợ phân trang
-            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            //Hỗ trợ phân trang , get all tag
+            //15/09/2020
+            return _postRepository.GetAllByTag(tag, page, pageSize ,out totalRow);
 
         }
 
@@ -95,6 +109,9 @@ namespace LecyShop.Service
             return _postRepository.GetSingleById(id);
         }
 
+        /// <summary>
+        /// Commit rồi mới gọi đến DB  
+        /// </summary>
         public void SaveChanges()
         {
             _unitOfWork.Commit();
